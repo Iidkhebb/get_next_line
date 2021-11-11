@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmoubal <hmoubal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: iidkhebb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 18:26:25 by hmoubal           #+#    #+#             */
-/*   Updated: 2021/11/10 17:36:56 by hmoubal          ###   ########.fr       */
+/*   Created: 2021/11/11 21:40:40 by iidkhebb          #+#    #+#             */
+/*   Updated: 2021/11/11 21:40:41 by iidkhebb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
