@@ -105,6 +105,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	while (i < len && index < ft_strlen(s))
 		out[i++] = ((char *)s)[index++];
 	out[i] = '\0';
+	free((char *)s);
 	return (out);
 }
 
@@ -119,6 +120,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memmove(s, s1, ft_strlen(s1));
 	ft_memmove(s + ft_strlen(s1), s2, ft_strlen(s2));
 	s[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free((char *)s1);
 	return (s);
 }
 

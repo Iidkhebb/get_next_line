@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "get_next_line.h"
 
 int buffer_len(char *str_static)
@@ -113,14 +112,12 @@ char *get_next_line(int fd)
     if (read_return_index == -1)
         return (0);
     //end of comment
-
     /*
         here is the fun part,  when we need to allocate the the string fron str_static to a new 
         string *char,  but we need to add a null terminator /0 at new_str + i and a /n at new_str + i + 1
     */
     new_str = line_cutter(str_static);
     //end of comment
-    
      /* next code is needed when we have already extract owr line , and if any next line remained 
     the extracted line need to be removed from the str_static.
     in other words the str_static need to be redefined */
@@ -128,6 +125,7 @@ char *get_next_line(int fd)
     // end of comment
     return(new_str);
 }
+/*
 int main()
 {
     int fd;
@@ -145,3 +143,4 @@ int main()
     }
     return (0);
 }
+*/
