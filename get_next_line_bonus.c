@@ -79,46 +79,55 @@ char *buffer_old_line_rm(char *str_static)
     str_static = ft_substr(str_static, (pos + 1), (remaining_len - pos - 1));
     return (str_static);
 }
-char *get_next_line(int fd)
+char *get_next_line(int fd_track)
 {
     char *str_tmp;
-    static char *str_static;
+    static char *str_static[10000000];
     int read_return_index;
     char *new_str;
 
-    if(fd < 0 || BUFFER_SIZE <= 0)
+    if(fd_track < 0 || BUFFER_SIZE <= 0)
         return(0);
     str_tmp = malloc(BUFFER_SIZE + 1);
     if (!(str_tmp))
         return(0);
-    while (buffer_len(str_static) == -1)
+    while (buffer_len(str_static[fd_track]) == -1)
     {
-        read_return_index = read(fd, str_tmp, BUFFER_SIZE);
+        read_return_index = read(fd_track, str_tmp, BUFFER_SIZE);
         if (read_return_index <= 0)
             break;
         str_tmp[read_return_index] = '\0';
-        str_static = ft_strjoin(str_static, str_tmp);
+        str_static[fd_track] = ft_strjoin(str_static[fd_track], str_tmp);
     }
     free(str_tmp);
     if (read_return_index == -1)
         return (0);
-    new_str = line_cutter(str_static);
-    str_static = buffer_old_line_rm(str_static);
+    new_str = line_cutter(str_static[fd_track]);
+    str_static[fd_track] = buffer_old_line_rm(str_static[fd_track]);
     return(new_str);
 }
 /*
 int main()
 {
-    int fd;
+    int fd1;
+    int fd2;
     char *line;
-    int i;
-    i =0;
-    fd = open("test.txt", O_RDWR | O_CREAT);
+    unsigned int i;
+    i =5;
+    fd1 = open("test.txt", O_RDWR | O_CREAT);
+    printf("the FD1 is : %d\n",fd1);
+    fd2 = open("test2.txt", O_RDWR | O_CREAT);
+    printf("the FD2 is : %d\n",fd2);
+    printf("--------------------------------------\n");
+    printf("--------------------------------------\n");
     //printf("the FD is : %d\n",fd);
-    while(line)
+    while(i--)
     {
-        line = get_next_line(fd);
-        printf("%s",line);
+        line = get_next_line(fd1);
+        printf("LINE 1 : %s\n",line);
+        line = get_next_line(fd2);
+        printf("LINE 2 : %s\n",line);
     }
     return (0);
-}*/
+}
+*/
