@@ -6,7 +6,7 @@
 /*   By: iidkhebb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 21:40:40 by iidkhebb          #+#    #+#             */
-/*   Updated: 2021/11/11 21:40:41 by iidkhebb         ###   ########.fr       */
+/*   Updated: 2021/11/13 03:52:19 by iidkhebb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	if(!str)
-		return(0);
+	if (!str)
+		return (0);
 	while (str[i] != '\0')
 	{
 		i++;
@@ -106,4 +106,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	free((char *)s1);
 	return (s);
 }
-
