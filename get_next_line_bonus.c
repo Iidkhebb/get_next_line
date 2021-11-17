@@ -63,7 +63,7 @@ char	*buffer_old_line_rm(char *str_static)
 char	*get_next_line(int fd)
 {
 	char		*str_tmp;
-	static char	*str_static[10000];
+	static char	*str_static[1024];
 	int			rtr;
 	char		*new_str;
 
