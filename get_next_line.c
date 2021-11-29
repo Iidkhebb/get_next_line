@@ -39,9 +39,14 @@ char	*line_cutter(char *str_static)
 	new_str = (char *)malloc((pos + 2) * sizeof(char));
 	if (!new_str)
 		return (NULL);
-	ft_memmove(new_str, str_static, pos);
-	new_str[pos] = '\n';
-	new_str[pos + 1] = '\0';
+	int i = 0;
+	while (str_static[i] != '\n')
+	{
+		new_str[i] = str_static[i];
+		i++;
+	}
+	new_str[i] = '\n';
+	new_str[i + 1] = '\0';
 	return (new_str);
 }
 
@@ -49,15 +54,16 @@ char	*buffer_old_line_rm(char *str_static)
 {
 	int	remaining_len;
 	int	pos;
-
+	char *buff;
 	if (!str_static)
 		return (NULL);
 	remaining_len = (int)ft_strlen(str_static);
 	pos = buffer_len(str_static);
 	if (pos == -1 || ((remaining_len - pos) == 1))
 		return (free(str_static), NULL);
-	str_static = ft_substr(str_static, (pos + 1), (remaining_len - pos - 1));
-	return (str_static);
+	buff = ft_strdup(str_static + pos + 1);
+	free((char *)str_static);
+	return (buff);
 }
 
 char	*get_next_line(int fd)
